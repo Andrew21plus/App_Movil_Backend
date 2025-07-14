@@ -10,7 +10,7 @@ load_dotenv()
 
 # URL de conexión a MongoDB Atlas
 MONGO_URL = os.getenv("MONGO_URL")
-
+print("MONGO_URL:", MONGO_URL)
 # Crear el cliente Mongo
 client = AsyncIOMotorClient(MONGO_URL)
 
