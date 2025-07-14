@@ -1,22 +1,18 @@
-# app/infrastructure/db.py
-
 from motor.motor_asyncio import AsyncIOMotorClient
 from fastapi import Request
 import os
 from dotenv import load_dotenv
 
-# Cargar variables del archivo .env
 load_dotenv()
 
-# URL de conexión a MongoDB Atlas
-MONGO_URL = os.getenv("MONGO_URL")
-print("MONGO_URL:", MONGO_URL)
-# Crear el cliente Mongo
-client = AsyncIOMotorClient(MONGO_URL)
+def get_client():
+    MONGO_URL = os.getenv("MONGO_URL")
+    if not MONGO_URL:
+        raise ValueError("MONGO_URL no está definido")
+    return AsyncIOMotorClient(MONGO_URL)
 
-# Seleccionar la base de datos: db_app_movil
+client = get_client()
 db = client["db_app_movil"]
 
-# Para usar como dependencia en FastAPI
 async def get_db(request: Request):
     return db
