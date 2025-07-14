@@ -20,3 +20,7 @@ app.include_router(task_router, prefix="/api", tags=["Tasks"])
 @app.get("/")
 def read_root():
     return {"message": "Backend funcionando"}
+
+@app.get("/ping")
+def ping():
+    return {"ping": "pong"}
