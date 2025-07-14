@@ -16,3 +16,7 @@ app.add_middleware(
 
 app.include_router(auth_router, prefix="/api", tags=["Auth"])
 app.include_router(task_router, prefix="/api", tags=["Tasks"])
+
+@app.get("/")
+def read_root():
+    return {"message": "Backend funcionando"}
