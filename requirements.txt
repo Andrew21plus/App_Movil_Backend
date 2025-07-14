@@ -5,5 +5,5 @@ passlib
 bcrypt
 pymongo
 python-multipart
-email-
+email-validator
 motor
